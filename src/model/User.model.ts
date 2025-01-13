@@ -19,18 +19,19 @@ const MessageSchema : Schema<Message> = new Schema({
 })
 
 export interface User extends Document {
-    name : string ; 
+   username : string ; 
     email : string ;
     password : string ;
     verifyCode : string ;
     verifyCodeExpiry : Date ; 
+    isVerified: boolean;
     isAcceptingMessage : boolean ; 
     messages : Message[];
-    createdAt : Date ;  // Date when the user was created.
+    // createdAt : Date ;  // Date when the user was created.
 }
 
 const UserSchema : Schema<User> = new Schema({
-    name : {
+    username : {
         type : String , 
         trim : true , 
         required : true 
@@ -49,6 +50,10 @@ const UserSchema : Schema<User> = new Schema({
         type : String , 
         required : [ true , "Verify code is required ! "]  
     },
+    isVerified: {
+        type: Boolean,
+        default: false,
+      },
     verifyCodeExpiry : {
         type : Date , 
         required : [true , "Please specify the expiry date of the verification code ! "] 
@@ -58,11 +63,7 @@ const UserSchema : Schema<User> = new Schema({
         required : [true , "Please specify if you want to accept messages or not ! "], 
     },
     messages : [MessageSchema],
-    createdAt : {
-        type : Date , 
-        required : true , 
-        default : Date.now()
-    }
+    
 });
 
 // note in next js they dont know wheter our app is run first time or previousley run so many time so ot can create a new model or use the existing one so we need to check if the model is already created or not

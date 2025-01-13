@@ -2,7 +2,7 @@
 // import mail sending function from where you made it 
 import { resend } from "@/db_lib/resend";
 import VerificationEmail  from "../../emails/verficationEmail";
-import { ApiResponse } from '../types/apiResponse'
+import { ApiResponse } from "../types/ApiResponse";
 
 
 export async function sendVerficationEmail(email : string , username : string , verifycode : string ) : Promise<ApiResponse> {
