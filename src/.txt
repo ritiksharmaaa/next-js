@@ -1,0 +1,8 @@
+here is diifrence in  next js 
+
+in normal pure  backend one we stsat it connecte to db and continuious runnign 
+
+but in next js is a completer a diffrent framework ; 
+
+next js is a edge time frame work it mean it run on request when request cam it create db connection do some backend process and end . 
+

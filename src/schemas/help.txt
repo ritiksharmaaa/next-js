@@ -1,0 +1,9 @@
+here we will use some other schema that wh we usw this one 
+
+we know we have monggose schema can those it not work it work :
+
+but monggose a validation for entire user schemas ; 
+
+what if we create signup so what user send data to me can singuo related schema validation happen or not 
+
+ so for thi swe are using a zod . for user passs data validation 

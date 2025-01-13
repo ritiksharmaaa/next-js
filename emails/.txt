@@ -1,0 +1,2 @@
+this folder help you to defien you email template which usaully company send so we create a dedicated section to store thos e tmplete to use it . 
+

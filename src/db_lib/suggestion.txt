@@ -1,0 +1,5 @@
+here we have to create the foldername not to db use lib 
+or focus on lin not libs 
+
+becuase libs can create when the shadcn came in the context they create libs directory in the main project folder .
+
