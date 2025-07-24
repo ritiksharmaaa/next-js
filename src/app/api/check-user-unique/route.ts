@@ -17,23 +17,26 @@ export async function GET(request : Request){
 
         // my code also work if i direlty pass searchparam.get.username it my way an dit work also . 
 
-        const usernameParm = { username : searchParams.get("username");}
+        const usernameParm = { username : searchParams.get("username")}
 
         const parsedData = userQuerySchema.safeParse(usernameParm);
+        // or we get resutl from zod . must log and watch . 
 
         if (!parsedData.success) {
+            const usernameError = parsedData.error.format().username?._errors || [];
             return Response.json({
                 success: false,
-                message: parsedData.error.errors[0].message,
-            }, { status: 400 });
+                message: usernameError?.length > 0 ? usernameError.join(',') : "invalid query parmeter "
+            }, { status: 500 });
         }
+        const {username } = parsedData.data // here we are getting valid dat after zod validate . 
 
-        const existingUser = await userModel.findOne({ username });
+        const existingUserVerfied = await userModel.findOne({ username  , isverified: true });
 
-        if (existingUser) {
+        if (existingUserVerfied) {
             return Response.json({
                 success: false,
-                message: "Username already exists",
+                message: "Username is already taken",
             }, { status: 409 });
         }
 
