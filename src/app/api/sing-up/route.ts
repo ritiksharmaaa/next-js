@@ -12,7 +12,7 @@ export async function POST(request : Request){
        const {username , email , password} =  await request.json();
     //    check user have in db or not or it is verfied or not 
     const userVerfiedByUsername  = await userModel.findOne({username , isVerfied :  true })
-    if(userVerfiedByUsername){
+    if(!userVerfiedByUsername){
         return Response.json({
             success : false,
             message : "this username is already taken "
