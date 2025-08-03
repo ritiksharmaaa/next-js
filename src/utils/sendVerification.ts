@@ -8,7 +8,7 @@ import { ApiResponse } from "../types/ApiResponse";
 export async function sendVerficationEmail(email : string , username : string , verifycode : string ) : Promise<ApiResponse> {
     try {
         await resend.emails.send({
-            from : "",
+            from : "mail.resend.com",
             to : email  , 
             subject : "Email Verification code ",
             react : VerificationEmail({username  , otp : verifycode})

@@ -29,11 +29,15 @@ export async function GET(request : Request){
                 message: usernameError?.length > 0 ? usernameError.join(',') : "invalid query parmeter "
             }, { status: 500 });
         }
-        const {username } = parsedData.data // here we are getting valid dat after zod validate . 
+        const {username } = parsedData.data // here we are getting valid dat after zod validate .
+        console.log("username : ", username); 
+        const existingUserdata = await userModel.findOne({ username: username, isVerified: true });
+        // console.log("data --------------- : ", data);
 
-        const existingUserVerfied = await userModel.findOne({ username  , isverified: true });
+        // const existingUserVerified = await userModel.findOne({ username : username  , isverified: true });
+        // console.log ("existingUserVerfied : ", existingUserVerified);
 
-        if (existingUserVerfied) {
+        if (existingUserdata) {
             return Response.json({
                 success: false,
                 message: "Username is already taken",
@@ -54,3 +58,4 @@ export async function GET(request : Request){
     }
 
 }
+

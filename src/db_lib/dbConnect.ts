@@ -20,7 +20,7 @@ async function dbConnected() : Promise<void> {
         return 
     }
     try {
-        const db = await mongoose.connect(process.env.MONGODB_URL || '' , {}) 
+        const db = await mongoose.connect(process.env.MONGODB_URL || "mongodb+srv://root_nextjs:6Q9NiqAu1zYNt8MT@nextwebapp.zitlyt5.mongodb.net/?retryWrites=true&w=majority&appName=nextwebapp" ) 
         // here we get db.connection an array we use as we need 
         connection.isConnected = db.connections[0].readyState  // ready state is juat a number 
         console.log("DB Connected successfully ")
