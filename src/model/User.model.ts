@@ -13,7 +13,7 @@ const MessageSchema : Schema<Message> = new Schema({
     },
     createdAt : {
         type : Date , 
-        rewuried : true , 
+        required : true , 
         default : Date.now()
     }
 })

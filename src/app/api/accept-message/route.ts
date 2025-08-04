@@ -41,3 +41,27 @@ export async function POST(request: Request) {
 
 
 }
+
+
+export async function GET(request: Request) { 
+    await dbConnected();
+    const session = await getServerSession(authOption);
+    if (!session || !session.user) {
+        return Response.json({ success: false, message: "User not authenticated" }, { status: 401 });
+    }
+    const user: User = session.user as User;
+    const userId = user._id;
+
+    try {
+        const dbUser = await userModel.findById(userId).select("isAcceptingMessage");
+        if (!dbUser) {
+            return Response.json({ success: false, message: "User not found" }, { status: 404 });
+        }
+        return Response.json({ success: true, isAcceptingMessage: dbUser.isAcceptingMessage }, { status: 200 });
+    } catch (error) {
+        if (error instanceof Error) {
+            return Response.json({ success: false, message: error.message }, { status: 400 });
+        }
+        return Response.json({ error: "Unknown error occurred" }, { status: 400 });
+    }
+}
