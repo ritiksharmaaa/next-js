@@ -9,14 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-email/components": "^0.0.32",
+    "@ai-sdk/openai": "^2.0.2",
+    "@ai-sdk/react": "^2.0.2",
+    "@react-email/components": "^0.4.0",
+    "ai": "^5.0.2",
     "bcryptjs": "^2.4.3",
     "mongoose": "^8.9.4",
     "next": "15.1.4",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-email": "^3.0.6",
+    "react-email": "^4.2.7",
     "resend": "^4.0.1",
     "zod": "^3.24.1"
   },
