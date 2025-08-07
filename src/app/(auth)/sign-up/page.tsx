@@ -24,7 +24,7 @@ const Page  = () => {
   const [isSubmitting , setIsSubmitting] = useState(false)
   const debounce = useDebounceCallback(setUsername , 300)  // here we are  callign our api not based on teh username we do it based on the debouncedUsername . 
   const {toast} = useToast() // this is help to create a notfcication message corner of the video
-//   const {router} = useRouter() 
+  const router  = useRouter() 
   // zod implemnetation fro use form 
   const form  = useForm<z.infer<typeof singUpSchema>>({resolver : zodResolver(singUpSchema) , 
     defaultValues : {
@@ -128,6 +128,7 @@ const Page  = () => {
                 </FormControl>
                   {isCheckingUsername && <Loader2 className="animate-spin" />  } 
                 <FormDescription>
+                    <p className={`text-sm ${usernameMessage === "Username is unique" ? 'text-green-500 ' : 'text-red-500'}`}></p>
                   This is your public display name {usernameMessage}
                 </FormDescription>
                 <FormMessage/>
