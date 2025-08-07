@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster" //  we are  addign this to use toast 
 import AuthProvider from "./context/AuthProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,9 @@ export default function RootLayout({
         >
           <AuthProvider>
         {children}
+        <Toaster />
+        {/* The Toaster component is used to display toast notifications */}
+        {/* It is placed here so that it can be used throughout the application */}
         </AuthProvider>
       </body>
     </html>

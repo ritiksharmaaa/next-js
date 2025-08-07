@@ -14,3 +14,4 @@ export const singUpSchema = z.object({
     // confirmPassword : z.string().ref('password') // password confirmation
 
 })
+
